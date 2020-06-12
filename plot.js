@@ -1,9 +1,25 @@
 
 // selecting the selDataset of the html to append the dropdown menu 
 var dropDown = d3.select("#selDataset");
+
+d3.json("records.json").then((data)=> {
+  console.log(data);
+
+  // getting the sample names and looping through them to append each and its values to the dropdown
+//   var cityNames = data.Origin; 
+//   console.log(cityNames);
+//   data.forEach((sample) => {
+//       console.log(sample.Origin)
+//       dropDown.append("option")
+//               .text(sample.Origin)
+//               .property("value",sample.Origin);
+//        // console.log(dropDown);
+
+//   });
+
+});
 //    reading the .csv using d3
-// d3.csv("Cleaned_Airlines_Data/2009_airlines_file_new.csv").then(function(data) {
-d3.csv("Cleaned_Airlines_Data/2009_airlines_max_ARR_Delay.csv").then(function(data) {
+d3.json("records.json").then(function(data) {
 
   console.log(data);
 
@@ -32,14 +48,15 @@ d3.csv("Cleaned_Airlines_Data/2009_airlines_max_ARR_Delay.csv").then(function(da
         height: 500
       };
       
-      Plotly.newPlot("bar", data, layout);
-      
+      Plotly.newPlot("bar", data, layout); 
       }
 
+  
 
 
 buildCharts();
 
+    
 
   // getting the sample names and looping through them to append each and its values to the dropdown
   // var flightDestination = +data.Destination; 
