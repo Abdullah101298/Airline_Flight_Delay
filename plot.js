@@ -7,32 +7,28 @@ d3.csv("Cleaned_Airlines_Data/2009_airlines_max_ARR_Delay.csv").then(function(da
 
   console.log(data);
 
-  function buildCharts(value) {
+  function buildCharts() {
 
     var trace= {
-          x :Origin,
-      //     y :chartLabels.map(labels => `otu ${labels}`), 
-      //     type : "bar",
-      //     orientation:'h'
+          x : ['Southwest','Delta'],
+          y : [3000,2000], 
+          type : "bar",
+          orientation:'h'
       
-      //   }
+        }
       
-      // var data = [trace];
-      // var layout = {
-      //   title: "Top 10 OTU IDS"
-      // };
+      var data = [trace];
+      var layout = {
+        title: "Top 10 OTU IDS"
+      };
       
-      // Plotly.newPlot("bar", data, layout);
+      Plotly.newPlot("bar", data, layout);
       
-      // }
+      }
 
 
 
-  }
-
-
-
-    buildCharts(value)
+buildCharts();
 
 
   // getting the sample names and looping through them to append each and its values to the dropdown
