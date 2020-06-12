@@ -11,25 +11,25 @@ d3.csv("Cleaned_Airlines_Data/2009_airlines_max_ARR_Delay.csv").then(function(da
 
     var trace1= {
           x : ['Southwest','Delta'],
-          y : [38517,64333], 
+          y : [38517,19953], 
           name: '2009',
           type : "bar",
-          orientation:'h'
       
         }
 
       var trace2= {
           x : ['Southwest','Delta'],
-          y : [19953,38890], 
+          y : [64333,38890], 
           name: '2018',
           type : "bar",
-          orientation:'h'
       
         }
       
       var data = [trace1,trace2];
       var layout = {
-        title: "Delay/Cancellation Count"
+        title: "Delay/Cancellation Count",
+        width: 500,
+        height: 500
       };
       
       Plotly.newPlot("bar", data, layout);
