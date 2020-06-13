@@ -51,9 +51,8 @@ d3.json("records.json").then(function(data) {
       Plotly.newPlot("bar", data, layout); 
       }
 
-buildCharts();
 
-
+    
 
   // getting the sample names and looping through them to append each and its values to the dropdown
   // var flightDestination = +data.Destination; 
