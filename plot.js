@@ -151,10 +151,10 @@
             title: { text: "Average Departure Time (Hours)" },
             type: "indicator",
             mode: "gauge+number+delta",
-            delta: { reference: 1.75, 'increasing': {'color': "Red"},'decreasing': {'color': "Green"} },
-            gauge: { axis: { range: [null, 3.5] }, 
-            'steps': [{'range': [0, 1.75], 'color': 'green'},
-              {'range': [1.75, 4], 'color': 'red'}], 
+            delta: { reference: 2, 'increasing': {'color': "Red"},'decreasing': {'color': "Green"} },
+            gauge: { axis: { range: [null, 4] }, 
+            'steps': [{'range': [0, 2], 'color': 'green'},
+              {'range': [2, 4], 'color': 'red'}], 
               'bar': {'color': "black"},
               'bgcolor': "white"}}
           ];
@@ -182,7 +182,7 @@ function initial(){
     var ret_arr = [];
     
     for (var i = 0; i < data.length; i++) {
-        obj[data[i].Origin_09] = true;
+        obj[data[i].Origin_18] = true;
     }
     for (var key in obj) {
         ret_arr.push(key);
