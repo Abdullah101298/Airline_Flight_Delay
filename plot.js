@@ -51,10 +51,6 @@ d3.json("records.json").then(function(data) {
       Plotly.newPlot("bar", data, layout); 
       }
 
-  
-
-
-buildCharts();
 
     
 
