@@ -1,38 +1,58 @@
 
 // selecting the selDataset of the html to append the dropdown menu 
 var dropDown = d3.select("#selDataset");
+
+d3.json("records.json").then((data)=> {
+  console.log(data);
+
+  // getting the sample names and looping through them to append each and its values to the dropdown
+//   var cityNames = data.Origin; 
+//   console.log(cityNames);
+//   data.forEach((sample) => {
+//       console.log(sample.Origin)
+//       dropDown.append("option")
+//               .text(sample.Origin)
+//               .property("value",sample.Origin);
+//        // console.log(dropDown);
+
+//   });
+
+});
 //    reading the .csv using d3
-// d3.csv("Cleaned_Airlines_Data/2009_airlines_file_new.csv").then(function(data) {
-d3.csv("Cleaned_Airlines_Data/2009_airlines_max_ARR_Delay.csv").then(function(data) {
+d3.json("records.json").then(function(data) {
 
   console.log(data);
 
-  function buildCharts(value) {
+  function buildCharts() {
 
-    var trace= {
-          x :Origin,
-      //     y :chartLabels.map(labels => `otu ${labels}`), 
-      //     type : "bar",
-      //     orientation:'h'
+    var trace1= {
+          x : ['Southwest','Delta'],
+          y : [38517,19953], 
+          name: '2009',
+          type : "bar",
       
-      //   }
+        }
+
+      var trace2= {
+          x : ['Southwest','Delta'],
+          y : [64333,38890], 
+          name: '2018',
+          type : "bar",
       
-      // var data = [trace];
-      // var layout = {
-      //   title: "Top 10 OTU IDS"
-      // };
+        }
       
-      // Plotly.newPlot("bar", data, layout);
+      var data = [trace1,trace2];
+      var layout = {
+        title: "Delay/Cancellation Count",
+        width: 500,
+        height: 500
+      };
       
-      // }
+      Plotly.newPlot("bar", data, layout); 
+      }
 
+buildCharts();
 
-
-  }
-
-
-
-    buildCharts(value)
 
 
   // getting the sample names and looping through them to append each and its values to the dropdown
