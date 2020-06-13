@@ -145,20 +145,23 @@
 
 
 
-        var data = [
+        var data3 = [
           {
             domain: { x: [0, 1], y: [0, 1] },
             value: Average_Overall_Delay,
             title: { text: "Average Departure Time (Hours)" },
             type: "indicator",
             mode: "gauge+number+delta",
-            delta: { reference: 1.5 },
-            gauge: { axis: { range: [null, 4] } }
-          }
-        ];
+            delta: { reference: 1.5, relative:  },
+            gauge: { axis: { range: [null, 4] }, 
+            'steps': [{'range': [0, 1.5], 'color': 'green'},
+              {'range': [1.5, 4], 'color': 'red'}]}, 
+              'bar': {'color': "darkblue"},
+              'bgcolor': "white"
+          }];
         
-        var layout = { width: 500, height: 500 };
-        Plotly.newPlot('Gauge chart', data, layout);
+        var layout3 = { width: 500, height: 500 };
+        Plotly.newPlot('Gauge chart', data3, layout3);
 
 
       });
