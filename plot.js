@@ -51,8 +51,9 @@ d3.json("records.json").then(function(data) {
       Plotly.newPlot("bar", data, layout); 
       }
 
-buildCharts();
+    });
 
+buildCharts();
     
 
   // getting the sample names and looping through them to append each and its values to the dropdown
@@ -72,7 +73,6 @@ buildCharts();
 
   // });
 
-});
 
 // building the metadata section of the dashboard
 // function buildMetadata (value) {
