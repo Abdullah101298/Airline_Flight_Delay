@@ -2,7 +2,7 @@
   
   function BarChart(value) {
 
-    d3.json("Cleaned_Airlines_Data/Final.json").then((data)=> {
+    d3.json("Cleaned_Airlines_Data/Last_File.json").then((data)=> {
 
       console.log(data)
 
@@ -175,7 +175,7 @@ function initial(){
     
   var dropDown = d3.select("#selDataset");
   
-  d3.json("Cleaned_Airlines_Data/Final.json").then((data)=> {
+  d3.json("Cleaned_Airlines_Data/Last_File.json").then((data)=> {
     
     // getting the sample names and looping through them to append each and its values to the dropdown
     var obj = {};
