@@ -148,7 +148,7 @@
         var data3 = [{
             domain: { x: [0, 1], y: [0, 1] },
             value: Average_Overall_Delay,
-            title: { text: "Average Departure Time (Hours)" },
+            title: { text: "Average Delay Time (Hours)" },
             type: "indicator",
             mode: "gauge+number+delta",
             delta: { reference: 2, 'increasing': {'color': "Red"},'decreasing': {'color': "Green"} },
