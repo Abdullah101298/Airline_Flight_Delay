@@ -134,8 +134,8 @@
         var data1 = [traces1, traces2];
 
         var layout1 = {title: "Average Arrival/Departure time based on Day of the Week",
-        width: 1000,
-        height: 500, 
+        width: 1200,
+        height: 600, 
         xaxis: {title: {text: "Day of the Week"}},
         yaxis: {title: {text: "Average Delay Time (Hour)"}}
       };
@@ -160,7 +160,7 @@
           ];
         
         
-        var layout3 = { width: 500, height: 500 };
+        var layout3 = { width: 500, height: 600 };
         Plotly.newPlot('Gauge chart', data3, layout3);
 
       });
