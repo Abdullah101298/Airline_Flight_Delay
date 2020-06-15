@@ -1,206 +1,217 @@
 
-// selecting the selDataset of the html to append the dropdown menu 
-var dropDown = d3.select("#selDataset");
+  
+  function BarChart(value) {
 
-d3.json("records.json").then((data)=> {
-  console.log(data);
+    d3.json("Cleaned_Airlines_Data/Last_File.json").then((data)=> {
 
-  // getting the sample names and looping through them to append each and its values to the dropdown
-//   var cityNames = data.Origin; 
-//   console.log(cityNames);
-//   data.forEach((sample) => {
-//       console.log(sample.Origin)
-//       dropDown.append("option")
-//               .text(sample.Origin)
-//               .property("value",sample.Origin);
-//        // console.log(dropDown);
+      console.log(data)
 
-//   });
+      countwn09 = 0; 
+      countdl09 = 0;
+      countwn18 = 0; 
+      countdl18 = 0;
 
-});
-//    reading the .csv using d3
-d3.json("records.json").then(function(data) {
-
-  console.log(data);
-
-  function buildCharts() {
-
-    var trace1= {
-          x : ['Southwest','Delta'],
-          y : [38517,19953], 
-          name: '2009',
-          type : "bar",
-      
+      for (var i = 0; i < data.length; i++) {
+        if (data[i].Origin_09 == value && data[i]['Airline_Identifier'] == 'WN')   {
+          countwn09 = countwn09+1;
+        }
+        if (data[i].Origin_09 == value && data[i]['Airline_Identifier'] == 'DL')   {
+          countdl09 = countdl09+1; 
         }
 
-      var trace2= {
-          x : ['Southwest','Delta'],
-          y : [64333,38890], 
-          name: '2018',
-          type : "bar",
-      
+        if (data[i].Origin_18 == value && data[i]['Airline_Identifier'] == 'WN')   {
+          countwn18 = countwn18+1;
         }
-      
-      var data = [trace1,trace2];
-      var layout = {
-        title: "Delay/Cancellation Count",
-        width: 500,
-        height: 500
+        if (data[i].Origin_18 == value && data[i]['Airline_Identifier'] == 'DL')   {
+          countdl18 = countdl18+1; 
+        }
+
       };
-      
-      Plotly.newPlot("bar", data, layout); 
-      }
 
+      countm = 0
+      countt = 0 
+      countw = 0 
+      countth=0 
+      countf=0 
+      countsa=0 
+      countsu = 0 
+      sumARR_DELAY_18m = 0 
+      sumARR_DELAY_18t = 0 
+      sumARR_DELAY_18w = 0 
+      sumARR_DELAY_18th=0 
+      sumARR_DELAY_18f=0 
+      sumARR_DELAY_18sa=0 
+      sumARR_DELAY_18su = 0 
+      sumDEP_DELAY_18m = 0 
+      sumDEP_DELAY_18t = 0 
+      sumDEP_DELAY_18w = 0 
+      sumDEP_DELAY_18th=0 
+      sumDEP_DELAY_18f=0 
+      sumDEP_DELAY_18sa=0 
+      sumDEP_DELAY_18su = 0 
 
+      for (var i = 0; i < data.length; i++) {
+        if (data[i].Origin_18 == value && data[i]['Weekday_of_Flight_18'] == 'Monday')   {
+          countm = countm+1;
+          sumARR_DELAY_18m = (data[i]['ARR_DELAY_18'] + sumARR_DELAY_18m) ; 
+          sumDEP_DELAY_18m = (data[i]['DEP_DELAY_18'] + sumDEP_DELAY_18m) ;   
+        }
+        else if (data[i].Origin_18 == value && data[i]['Weekday_of_Flight_18'] == 'Tuesday')   {
+          countt = countt+1; 
+          sumARR_DELAY_18t = (data[i]['ARR_DELAY_18'] + sumARR_DELAY_18t) ; 
+          sumDEP_DELAY_18t = (data[i]['DEP_DELAY_18'] + sumDEP_DELAY_18t) ; 
+        }
+        else if (data[i].Origin_18 == value && data[i]['Weekday_of_Flight_18'] == 'Wednesday')   {
+          countw = countw+1;
+          sumARR_DELAY_18w = (data[i]['ARR_DELAY_18'] + sumARR_DELAY_18w); 
+          sumDEP_DELAY_18w = (data[i]['DEP_DELAY_18'] + sumDEP_DELAY_18w) ; 
+        }
+        else if (data[i].Origin_18 == value && data[i]['Weekday_of_Flight_18'] == 'Thursday')   {
+          countth = countth+1; 
+          sumARR_DELAY_18th = (data[i]['ARR_DELAY_18'] + sumARR_DELAY_18th) ; 
+          sumDEP_DELAY_18th = (data[i]['DEP_DELAY_18'] + sumDEP_DELAY_18th) ; 
+        }
+        else if (data[i].Origin_18 == value && data[i]['Weekday_of_Flight_18'] == 'Friday')   {
+          countf = countf+1; 
+          sumARR_DELAY_18f = (data[i]['ARR_DELAY_18'] + sumARR_DELAY_18f) ; 
+          sumDEP_DELAY_18f = (data[i]['DEP_DELAY_18'] + sumDEP_DELAY_18f) ; 
+        }
+        else if (data[i].Origin_18 == value && data[i]['Weekday_of_Flight_18'] == 'Saturday')   {
+          countsa = countsa+1; 
+          sumARR_DELAY_18sa = (data[i]['ARR_DELAY_18'] + sumARR_DELAY_18sa) ; 
+          sumDEP_DELAY_18sa = (data[i]['DEP_DELAY_18'] + sumDEP_DELAY_18sa) ; 
+        }
+        else if (data[i].Origin_18 == value && data[i]['Weekday_of_Flight_18'] == 'Sunday')   {
+          countsu = countsu+1; 
+          sumARR_DELAY_18su = (data[i]['ARR_DELAY_18'] + sumARR_DELAY_18su) ; 
+          sumDEP_DELAY_18su = (data[i]['DEP_DELAY_18'] + sumDEP_DELAY_18su) ; 
+        }
+
+      };
+
+      Average_Overall_Delay = (sumDEP_DELAY_18m + sumDEP_DELAY_18t + sumDEP_DELAY_18w + sumDEP_DELAY_18th + sumDEP_DELAY_18f + sumDEP_DELAY_18sa + sumDEP_DELAY_18su) / (countwn18 + countdl18) 
     
-
-  // getting the sample names and looping through them to append each and its values to the dropdown
-  // var flightDestination = +data.Destination; 
-  // var flightOrigin = +data.Origin;
-  
-  
-  // console.log(flightDestination);
-  // console.log(flightOrigin);
-
-
-  // flightOrigin.forEach((sample) => {
-  //     dropDown.append("option")
-  //             .text(sample)
-  //             .property("value",sample);
-  //     // console.log(dropDown);
-
-  // });
-
-});
-
-// building the metadata section of the dashboard
-// function buildMetadata (value) {
-// d3.json("samples.json").then((data)=> {
-//     console.log(data.metadata);
-//     var metadata = data.metadata
-//     var filteredMetadata = metadata.filter(row => row.id == value);
-
-//     console.log("meta",filteredMetadata);
-
-//    var sampleMetadata =  filteredMetadata[0]
-
-//    // selecting the html sample-metadata section to add the metadata
-//        var metadataPanel = d3.select("#sample-metadata");
-//     // Update all of the plots any time that a new sample is selected.
-//        metadataPanel.html("");
-
-//        // use of object. entries to loop through the key-value pair of the me-
-//          //tadata and then appending the pairs
-//        Object.entries(sampleMetadata).forEach(([key,value]) => {
-//         console.log(key, value)
-//        metadataPanel.append('p')
-//                     .text(`${key},${value}`)
-
-// });
-// })
-// }
-// function buildCharts(value) {
-//   d3.csv("Cleaned_Airlines_Data/2009_airlines_max_ARR_Delay.csv").then(function(data) {
-//     console.log(data);
-
-//     // get the values from the  json  to build the bubble chart and a pie chart
+      var trace1= {
+            x : ['Southwest','Delta'],
+            y : [countwn09,countdl09], 
+            name: '2009',
+            type : "bar",
         
-// // filtering the data to get the sample IDs
-//     var sampleIds = data.samples.filter(row => row.id == value); 
-//     console.log(sampleIds)   
-//     console.log(sampleIds[0]);
+          }
 
-//     var sampleValues = sampleIds[0].sample_values
+        var trace2= {
+            x : ['Southwest','Delta'],
+            y : [countwn18,countdl18], 
+            name: '2018',
+            type : "bar",
+        
+          }
+        
+        var data = [trace1,trace2];
+        var layout = {
+          title: "Delay/Cancellation Count",
+          width: 500,
+          height: 500, 
+          yaxis: {title: {text: "Number of Delays/Cancellations"}}
+        };
+        
+        Plotly.newPlot("bar", data, layout); 
+
+        var traces1 = {
+          x: ['Monday', 'Tuesday', 'Wednesday', 'Thursday','Friday','Saturday','Sunday'],
+          y: [sumARR_DELAY_18m/countm,sumARR_DELAY_18t/countt,sumARR_DELAY_18w/countw,sumARR_DELAY_18th/countth,sumARR_DELAY_18f/countf,sumARR_DELAY_18sa/countsa,sumARR_DELAY_18su/countsu],
+          type: 'scatter',
+          name: 'Arrivals'
+        };
+        
+        var traces2 = {
+          x: ['Monday', 'Tuesday', 'Wednesday', 'Thursday','Friday','Saturday','Sunday'],
+          y: [sumDEP_DELAY_18m/countm,sumDEP_DELAY_18t/countt,sumDEP_DELAY_18w/countw,sumDEP_DELAY_18th/countth,sumDEP_DELAY_18f/countf,sumDEP_DELAY_18sa/countsa,sumDEP_DELAY_18su/countsu],
+          type: 'scatter',
+          name: 'Departures'
+        };
+        
+        var data1 = [traces1, traces2];
+
+        var layout1 = {title: "Average Arrival/Departure time based on Day of the Week",
+        width: 1200,
+        height: 600, 
+        xaxis: {title: {text: "Day of the Week"}},
+        yaxis: {title: {text: "Average Delay Time (Hour)"}}
+      };
+
+        
+        Plotly.newPlot('Line chart', data1,layout1);
+
+
+
+        var data3 = [{
+            domain: { x: [0, 1], y: [0, 1] },
+            value: Average_Overall_Delay,
+            title: { text: "Average Delay Time (Hours)" },
+            type: "indicator",
+            mode: "gauge+number+delta",
+            delta: { reference: 2, 'increasing': {'color': "Red"},'decreasing': {'color': "Green"} },
+            gauge: { axis: { range: [null, 4] }, 
+            'steps': [{'range': [0, 2], 'color': 'green'},
+              {'range': [2, 4], 'color': 'red'}], 
+              'bar': {'color': "black"},
+              'bgcolor': "white"}}
+          ];
+        
+        
+        var layout3 = { width: 500, height: 600 };
+        Plotly.newPlot('Gauge chart', data3, layout3);
+
+      });
+      
+    };
+
+  // selecting the selDataset of the html to append the dropdown menu 
+
+function initial(){ 
     
-//     var sampleLabels = sampleIds[0].otu_ids;
-//     var sampleText = sampleIds[0].otu_labels
-
-//     // console.log(sampleText);
+  var dropDown = d3.select("#selDataset");
+  
+  d3.json("Cleaned_Airlines_Data/Last_File.json").then((data)=> {
     
+    // getting the sample names and looping through them to append each and its values to the dropdown
+    var obj = {};
+    var ret_arr = [];
     
-//     // Object that contains data to plot the bubble chart
-//     var trace = {
-//       x: sampleLabels,
-//       y: sampleValues,
-//       mode: 'markers',
-//       text: sampleText,
-//       marker: { 
-//         size: sampleValues,
-//         color: sampleLabels,
-//         colorscale: 'Portland',
-//       }
-//     };
+    for (var i = 0; i < data.length; i++) {
+        obj[data[i].Origin_18] = true;
+    }
+    for (var key in obj) {
+        ret_arr.push(key);
+    };
+    
+    console.log(ret_arr);
+    for (var i = 0; i < ret_arr.length; i++) {
+        dropDown.append("option")
+                .text(ret_arr[i])
+                .property("value",ret_arr[i]);
+         // console.log(dropDown); 
+    }
+  
+    // Use the first sample from the list to build the initial plots
+    var firstSample = ret_arr[0];
+    BarChart(firstSample);
+  
+  
+  });
+  
+  };
 
-//     var layout = {
-//       title: "OTU-IDS Visual",
-//       height: 600
-//     };
-
-//     // Ploting the bubble chart 
-//     var data = [trace];
-//     Plotly.newPlot('bubble', data, layout)
+  function optionChanged(newSample) {
+    // Fetch new data each time a new sample is selected
+    BarChart(newSample);
+  }
   
 
+initial()
 
-//   // making a pie chart
 
-//    // using the top 10 samples to make the pie chart...use sorting function then slice the top 10
-//     var chartValues = sampleValues.sort(function(a, b){return a - b}).slice(0,10);
-//     console.log("top",chartValues);
-//     var chartLabels = sampleLabels;
-//     console.log("labels", chartLabels);
-//     var chartText = sampleText;
-
-//     // Object that contains data to be plotted 
-//     var data = [{
-//       values: chartValues, 
-//       labels: chartLabels,
-//       type: "pie",
-//       text: chartText 
-
-//     }];
-
-//     var layout = {
-//       title: "Top 10 Samples",
-//       height: 400, 
-//       width: 400,
-//       colorway: ['Earth'],
-//     };
-
-// // plotting the pie chart
-//     Plotly.newPlot('pie', data, layout);
-
-//   // making the bar chart
-
-//   var trace2 = {
-//     x :chartValues,
-//     y :chartLabels.map(labels => `otu ${labels}`), 
-//     type : "bar",
-//     orientation:'h'
-
-//   }
-
-// var data = [trace2];
-// var layout = {
-//   title: "Top 10 OTU IDS"
-// };
-
-// Plotly.newPlot("bar", data, layout);
-
-// }
-//     )};
-
-//     // code for when sample changes
-
-// function optionChanged(value) {
-     
-//   // firing the functions
-
-//     buildMetadata(value)
-//     buildCharts(value)
-// };
-
-init ()
 
 
 
