@@ -347,13 +347,13 @@ function initial(){
         ret_arr.push(key);
     };
     
-    // console.log(ret_arr);
-    // for (var i = 0; i < ret_arr.length; i++) {
-    //     dropDown.append("option")
-    //             .text(ret_arr[i])
-    //             .property("value",ret_arr[i]);
-    //      // console.log(dropDown); 
-    // }
+    console.log(ret_arr);
+    for (var i = 0; i < ret_arr.length; i++) {
+        dropDown.append("option")
+                .text(ret_arr[i])
+                .property("value",ret_arr[i]);
+         // console.log(dropDown); 
+    }
   
     // Use the first sample from the list to build the initial plots
     var firstSample = ret_arr[0];
