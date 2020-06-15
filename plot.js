@@ -2,7 +2,7 @@
   
   function BarChart(value) {
 
-    d3.json("Cleaned_Airlines_Data/Final.json").then((data)=> {
+    d3.json("Cleaned_Airlines_Data/Last_File.json").then((data)=> {
 
       console.log(data)
 
@@ -134,8 +134,8 @@
         var data1 = [traces1, traces2];
 
         var layout1 = {title: "Average Arrival/Departure time based on Day of the Week",
-        width: 1000,
-        height: 500, 
+        width: 1200,
+        height: 600, 
         xaxis: {title: {text: "Day of the Week"}},
         yaxis: {title: {text: "Average Delay Time (Hour)"}}
       };
@@ -148,7 +148,7 @@
         var data3 = [{
             domain: { x: [0, 1], y: [0, 1] },
             value: Average_Overall_Delay,
-            title: { text: "Average Departure Time (Hours)" },
+            title: { text: "Average Delay Time (Hours)" },
             type: "indicator",
             mode: "gauge+number+delta",
             delta: { reference: 2, 'increasing': {'color': "Red"},'decreasing': {'color': "Green"} },
@@ -163,8 +163,6 @@
         var layout3 = { width: 500, height: 500 };
         Plotly.newPlot('Gauge chart', data3, layout3);
 
-
-
       });
       
     };
@@ -175,7 +173,7 @@ function initial(){
     
   var dropDown = d3.select("#selDataset");
   
-  d3.json("Cleaned_Airlines_Data/Final.json").then((data)=> {
+  d3.json("Cleaned_Airlines_Data/Last_File.json").then((data)=> {
     
     // getting the sample names and looping through them to append each and its values to the dropdown
     var obj = {};
