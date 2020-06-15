@@ -26,6 +26,7 @@ function BarChart(value) {
 
     };
 
+
     countm = 0
     countt = 0 
     countw = 0 
@@ -412,6 +413,8 @@ function optionChanged1(newSample) {
 
 initial()
 initial1()
+
+
 
 
 
