@@ -160,7 +160,7 @@
           ];
         
         
-        var layout3 = { width: 500, height: 600 };
+        var layout3 = { width: 500, height: 500 };
         Plotly.newPlot('Gauge chart', data3, layout3);
 
       });
