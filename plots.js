@@ -1,5 +1,5 @@
 function BarChart(value) {
-  var dataUrl = `/api/v1.0/Final_Airlines_Data`;  //"../New_Final.json"
+  var dataUrl = `/api/v1.0/2018_Airlines_Data`;  //"../New_Final.json"
   d3.json(dataUrl).then((data)=> {
     
     console.log(data)
@@ -26,7 +26,6 @@ function BarChart(value) {
 
     };
 
-    
 
     countm = 0
     countt = 0 
@@ -167,7 +166,7 @@ function BarChart(value) {
 
 function BarChart1(value) {
 
-      d3.json("../New_Final.json").then((data)=> {
+      d3.json("Cleaned_Airlines_Data/Last_File.json").then((data)=> {
         console.log(data)
     
         countwn09 = 0; 
@@ -336,7 +335,7 @@ function initial(){
     
   var dropDown = d3.select("#selDataset");
   
-  d3.json("../New_Final.json").then((data)=> {
+  d3.json("Cleaned_Airlines_Data/Last_File.json").then((data)=> {
     
     // getting the sample names and looping through them to append each and its values to the dropdown
     var obj = {};
@@ -370,7 +369,7 @@ function initial1(){
   
     var dropDown = d3.select("#selDataset1");
     
-    d3.json("../New_Final.json").then((data)=> {
+    d3.json("Cleaned_Airlines_Data/Last_File.json").then((data)=> {
       
       // getting the sample names and looping through them to append each and its values to the dropdown
       var obj = {};
