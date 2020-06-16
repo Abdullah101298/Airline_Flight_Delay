@@ -1,5 +1,5 @@
 function BarChart(value) {
-  var dataUrl = `/api/v1.0/2018_Airlines_Data`;  //"../New_Final.json"
+  var dataUrl = `/api/v1.0/Final_Airlines_Data`;  //"../New_Final.json"
   d3.json(dataUrl).then((data)=> {
     
     console.log(data)
@@ -26,6 +26,7 @@ function BarChart(value) {
 
     };
 
+    
 
     countm = 0
     countt = 0 
