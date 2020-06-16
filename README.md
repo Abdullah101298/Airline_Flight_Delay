@@ -36,3 +36,5 @@ In js, code was modified to create the 3 visualizations. The first is a bar char
 We uploaded the app into AWS through elastic beanstalk following different instructions such as creating different files txt and py and uploading them. 
 
 
+
+
