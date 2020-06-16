@@ -12,6 +12,9 @@ The purpose of this project is to analyze the flight delays/cancellations for tw
 
 We will analyze the number of delays and the time it takes till departure after delay based off the month and the airport. We will specifically be looking at more busy months like June, July, August, and December. 
 
+## Steps 
+<br> 
+
 ### Task 1: Data Exploration and Cleanup 
 
 Our first task was to minimize our data so it can be optimal for use. This was done in Excel and in Python. Excel was used to remove unnecessary rows and Python was used to filter the data based on the months and airlines of interest and to join the 2009 and 2018 data together. 
