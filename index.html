@@ -7,7 +7,6 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Airlines Flight Delay and Cancellattions</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/lux/bootstrap.min.css">
-  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
   <link rel="stylesheet" type="text/css" href="style.css">
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
@@ -17,7 +16,7 @@
 
 
 <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
-  <div class="container text-right">
+  <div class="container text-center">
     <a class="navbar-brand logo" > 
       <span class="nav-color">Airlines Flight Delays </span></a>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
@@ -41,8 +40,10 @@
         </button> -->
       </div>
     </div>
+    
+    <div class="container">
     <div class="row">
-      <div class="col-md-2">
+      <div class="col-md-3">
         <div class="well">
           <h5>Airport:</h5>
           <select id="selDataset" onchange="optionChanged(this.value)"></select>
@@ -52,39 +53,35 @@
 
 
         <div class="row">
-          <div class="col-md-2">
+          <div class="col-md-3">
         <div class="well">
           <h5>Month:</h5>
           <select id="selDataset1" onchange="optionChanged1(this.value)"></select>
       </div>
           </div>
-        </div>
+        </div> 
 
+      </div>
 
-        <!-- <div class="panel panel-primary">
-          <div class="panel-heading">
-            <h3 class="panel-title"></h3>
-          </div>
-          <div id="sample-metadata" class="panel-body"></div>
-        </div>
-      </div> -->
-
-
+      <div class="container">
       <div class="row">
       <div class="col-md-6">
-        <div id="bar"></div>
+        <div id="bar" ></div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-6">
         <div id="Gauge chart"></div>
       </div>
     </div>
+      </div>
 
-    <div class="row" class="img-fluid">
+      <div class="container">
+    <div class="row" class="img-fluid pull-right" >
       <div class="col-md-12" class="img-fluid">
         <div id="Line chart"></div>
       </div>
     </div>
   </div>
+<!-- </div> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <script src="plots.js"></script>

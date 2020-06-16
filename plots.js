@@ -25,8 +25,7 @@ function BarChart(value) {
       }
 ​
     };
-​
-​
+
     countm = 0
     countt = 0 
     countw = 0 
@@ -165,7 +164,7 @@ function BarChart(value) {
     };
 ​
 function BarChart1(value) {
-​
+
       d3.json("Cleaned_Airlines_Data/Last_File.json").then((data)=> {
         console.log(data)
     
