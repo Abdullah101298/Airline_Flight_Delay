@@ -88,7 +88,7 @@ function BarChart(value) {
     };
 
       Average_Overall_Delay = (sumDEP_DELAY_18m + sumDEP_DELAY_18t + sumDEP_DELAY_18w + sumDEP_DELAY_18th + sumDEP_DELAY_18f + sumDEP_DELAY_18sa + sumDEP_DELAY_18su) / (countwn18 + countdl18) 
-      console.log(Average_Overall_Delay);
+      
       var trace1= {
             x : ['Southwest','Delta'],
             y : [countwn09,countdl09], 
@@ -252,7 +252,7 @@ function BarChart1(value) {
         };
     
         Average_Overall_Delay = (sumDEP_DELAY_18m + sumDEP_DELAY_18t + sumDEP_DELAY_18w + sumDEP_DELAY_18th + sumDEP_DELAY_18f + sumDEP_DELAY_18sa + sumDEP_DELAY_18su) / (countwn18 + countdl18) 
-        console.log(Average_Overall_Delay);
+        
         var trace1= {
           x : ['Southwest','Delta'],
           y : [countwn09,countdl09], 
