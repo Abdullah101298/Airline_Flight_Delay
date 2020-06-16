@@ -22,5 +22,14 @@ The next step was to upload the data to MongoDB using Mongo atlas to be used lat
 
 ### Task 3: Creating the Flask app 
 
+Create the flask app with different routes and import the data from Mongo atlas on the cloud to the app. 
+
+### Task 4: Create the js, HTML, and CSS for the visualizations 
+
+In js, code was modified to create the 3 visualizations. The first is a bar chart, the second a gauge chart, and the third a line chart. As we did this, the HTML of the dashboard was created as well as features such as buttons and dropdowns. 
+
+### Task 5: Uploading the app in AWS through Elastic Beanstalk
+
+We uploaded the app into AWS through elastic beanstalk following different instructions such as creating different files txt and py and uploading them. 
 
 
