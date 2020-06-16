@@ -26,7 +26,7 @@ def show_apis():
     return (
         f"<h4>Available Routes:</h4>"
         f'<a href="/api/v1.0/Sample_Final_Airlines_Data">/api/v1.0/Sample_Final_Airlines_Data</a><br/>'
-        f'<a href="/api/v1.0/Final_Airlines_Data">/api/v1.0/2018_Airlines_Data</a><br/>'       
+        f'<a href="/api/v1.0/Final_Airlines_Data">/api/v1.0/Final_Airlines_Data</a><br/>'       
         f'<a href="/api/v1.0/2009_max_Arr_Delay_Data">/api/v1.0/2009_max_Arr_Delay_Data</a><br/>' 
         f'<a href="/api/v1.0/2018_max_Arr_Delay_Data">/api/v1.0/2018_max_Arr_Delay_Data</a><br/>' 
         f'<a href="/"><h4>Back</h4></a><br/>' 
