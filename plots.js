@@ -3,12 +3,12 @@ function BarChart(value) {
   d3.json(dataUrl).then((data)=> {
     
     console.log(data)
-
+​
     countwn09 = 0; 
     countdl09 = 0;
     countwn18 = 0; 
     countdl18 = 0;
-
+​
     for (var i = 0; i < data.length; i++) {
       if (data[i].Origin_09 == value && data[i]['Airline_Identifier'] == 'WN')   {
         countwn09 = countwn09+1;
@@ -16,16 +16,15 @@ function BarChart(value) {
       if (data[i].Origin_09 == value && data[i]['Airline_Identifier'] == 'DL')   {
         countdl09 = countdl09+1; 
       }
-
+​
       if (data[i].Origin_18 == value && data[i]['Airline_Identifier'] == 'WN')   {
         countwn18 = countwn18+1;
       }
       if (data[i].Origin_18 == value && data[i]['Airline_Identifier'] == 'DL')   {
         countdl18 = countdl18+1; 
       }
-
+​
     };
-
 
     countm = 0
     countt = 0 
@@ -48,7 +47,7 @@ function BarChart(value) {
     sumDEP_DELAY_18f=0 
     sumDEP_DELAY_18sa=0 
     sumDEP_DELAY_18su = 0 
-
+​
     for (var i = 0; i < data.length; i++) {
       if (data[i].Origin_18 == value && data[i]['Weekday_of_Flight_18'] == 'Monday')   {
         countm = countm+1;
@@ -85,9 +84,9 @@ function BarChart(value) {
         sumARR_DELAY_18su = (data[i]['ARR_DELAY_18'] + sumARR_DELAY_18su) ; 
         sumDEP_DELAY_18su = (data[i]['DEP_DELAY_18'] + sumDEP_DELAY_18su) ; 
       }
-
+​
     };
-
+​
       Average_Overall_Delay = (sumDEP_DELAY_18m + sumDEP_DELAY_18t + sumDEP_DELAY_18w + sumDEP_DELAY_18th + sumDEP_DELAY_18f + sumDEP_DELAY_18sa + sumDEP_DELAY_18su) / (countwn18 + countdl18) 
       console.log(Average_Overall_Delay);
       var trace1= {
@@ -97,7 +96,7 @@ function BarChart(value) {
             type : "bar",
         
           }
-
+​
         var trace2= {
             x : ['Southwest','Delta'],
             y : [countwn18,countdl18], 
@@ -115,7 +114,7 @@ function BarChart(value) {
         };
         
         Plotly.newPlot("bar", data, layout); 
-
+​
         var traces1 = {
           x: ['Monday', 'Tuesday', 'Wednesday', 'Thursday','Friday','Saturday','Sunday'],
           y: [sumARR_DELAY_18m/countm,sumARR_DELAY_18t/countt,sumARR_DELAY_18w/countw,sumARR_DELAY_18th/countth,sumARR_DELAY_18f/countf,sumARR_DELAY_18sa/countsa,sumARR_DELAY_18su/countsu],
@@ -131,19 +130,19 @@ function BarChart(value) {
         };
         
         var data1 = [traces1, traces2];
-
+​
         var layout1 = {title: "Average Arrival/Departure time based on Day of the Week",
         width: 1000,
         height: 500, 
         xaxis: {title: {text: "Day of the Week"}},
         yaxis: {title: {text: "Average Delay Time (Hour)"}}
       };
-
+​
         
         Plotly.newPlot('Line chart', data1,layout1);
-
-
-
+​
+​
+​
         var data = [
           {
             domain: { x: [0, 1], y: [0, 1] },
@@ -158,12 +157,12 @@ function BarChart(value) {
         
         var layout = { width: 500, height: 500 };
         Plotly.newPlot('Gauge chart', data, layout);
-
-
+​
+​
       });
       
     };
-
+​
 function BarChart1(value) {
 
       d3.json("Cleaned_Airlines_Data/Last_File.json").then((data)=> {
@@ -327,10 +326,10 @@ function BarChart1(value) {
         });
         
   };
-
-
+​
+​
   // selecting the selDataset of the html to append the dropdown menu 
-
+​
 function initial(){ 
     
   var dropDown = d3.select("#selDataset");
@@ -364,7 +363,7 @@ function initial(){
   });
   
   };
-
+​
 function initial1(){ 
   
     var dropDown = d3.select("#selDataset1");
@@ -398,23 +397,21 @@ function initial1(){
     });
     
    };
-
-
+​
+​
 function optionChanged(newSample) {
     // Fetch new data each time a new sample is selected
     BarChart(newSample);
   }
-
+​
 function optionChanged1(newSample) {
     // Fetch new data each time a new sample is selected
     BarChart1(newSample);
   }
   
-
+​
 initial()
 initial1()
-
-
 
 
 

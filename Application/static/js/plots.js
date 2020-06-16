@@ -1,8 +1,8 @@
 function BarChart(value) {
-  var dataUrl = `/api/v1.0/Final_Airlines_Data`;  //"../New_Final.json"
+  var dataUrl = "/api/v1.0/Final_Airlines_Data";
   d3.json(dataUrl).then((data)=> {
     
-    console.log(data)
+    console.log(data.map(item=>item.Origin_09));
 
     countwn09 = 0; 
     countdl09 = 0;
@@ -25,7 +25,6 @@ function BarChart(value) {
       }
 
     };
-
 
     countm = 0
     countt = 0 
@@ -89,7 +88,7 @@ function BarChart(value) {
     };
 
       Average_Overall_Delay = (sumDEP_DELAY_18m + sumDEP_DELAY_18t + sumDEP_DELAY_18w + sumDEP_DELAY_18th + sumDEP_DELAY_18f + sumDEP_DELAY_18sa + sumDEP_DELAY_18su) / (countwn18 + countdl18) 
-      console.log(Average_Overall_Delay);
+      
       var trace1= {
             x : ['Southwest','Delta'],
             y : [countwn09,countdl09], 
@@ -114,7 +113,7 @@ function BarChart(value) {
           yaxis: {title: {text: "Number of Delays/Cancellations"}}
         };
         
-        Plotly.newPlot("bar", data, layout); 
+        Plotly.react("bar", data, layout); 
 
         var traces1 = {
           x: ['Monday', 'Tuesday', 'Wednesday', 'Thursday','Friday','Saturday','Sunday'],
@@ -140,7 +139,7 @@ function BarChart(value) {
       };
 
         
-        Plotly.newPlot('Line chart', data1,layout1);
+        Plotly.react('Line chart', data1,layout1);
 
 
 
@@ -157,7 +156,7 @@ function BarChart(value) {
         ];
         
         var layout = { width: 500, height: 500 };
-        Plotly.newPlot('Gauge chart', data, layout);
+        Plotly.react('Gauge chart', data, layout);
 
 
       });
@@ -165,9 +164,9 @@ function BarChart(value) {
     };
 
 function BarChart1(value) {
-
-      d3.json("Cleaned_Airlines_Data/Last_File.json").then((data)=> {
-        console.log(data)
+      var dataUrl = "/api/v1.0/Final_Airlines_Data";
+      d3.json(dataUrl).then((data)=> {
+        console.log(data);
     
         countwn09 = 0; 
         countdl09 = 0;
@@ -253,7 +252,7 @@ function BarChart1(value) {
         };
     
         Average_Overall_Delay = (sumDEP_DELAY_18m + sumDEP_DELAY_18t + sumDEP_DELAY_18w + sumDEP_DELAY_18th + sumDEP_DELAY_18f + sumDEP_DELAY_18sa + sumDEP_DELAY_18su) / (countwn18 + countdl18) 
-        console.log(Average_Overall_Delay);
+        
         var trace1= {
           x : ['Southwest','Delta'],
           y : [countwn09,countdl09], 
@@ -278,7 +277,7 @@ function BarChart1(value) {
           yaxis: {title: {text: "Number of Delays/Cancellations"}}
         };
       
-        Plotly.newPlot("bar", data, layout); 
+        Plotly.react("bar", data, layout); 
     
         var traces1 = {
           x: ['Monday', 'Tuesday', 'Wednesday', 'Thursday','Friday','Saturday','Sunday'],
@@ -304,7 +303,7 @@ function BarChart1(value) {
       };
     
       
-      Plotly.newPlot('Line chart', data1,layout1);
+      Plotly.react('Line chart', data1,layout1);
     
     
     
@@ -321,7 +320,7 @@ function BarChart1(value) {
           ];
           
           var layout = { width: 500, height: 500 };
-          Plotly.newPlot('Gauge chart', data, layout);
+          Plotly.react('Gauge chart', data, layout);
     
     
         });
@@ -334,10 +333,10 @@ function BarChart1(value) {
 function initial(){ 
     
   var dropDown = d3.select("#selDataset");
-  
-  d3.json("Cleaned_Airlines_Data/Last_File.json").then((data)=> {
+  // dropDown.html("");
+  var dataUrl = "/api/v1.0/Origin"; 
+  d3.json(dataUrl).then((data)=> {
     
-    // getting the sample names and looping through them to append each and its values to the dropdown
     var obj = {};
     var ret_arr = [];
     
@@ -348,15 +347,7 @@ function initial(){
         ret_arr.push(key);
     };
     
-    console.log(ret_arr);
-    for (var i = 0; i < ret_arr.length; i++) {
-        dropDown.append("option")
-                .text(ret_arr[i])
-                .property("value",ret_arr[i]);
-         // console.log(dropDown); 
-    }
-  
-    // Use the first sample from the list to build the initial plots
+    
     var firstSample = ret_arr[0];
     BarChart(firstSample);
   
@@ -368,27 +359,20 @@ function initial(){
 function initial1(){ 
   
     var dropDown = d3.select("#selDataset1");
-    
-    d3.json("Cleaned_Airlines_Data/Last_File.json").then((data)=> {
+    // dropDown.html("");
+    var dataUrl = "/api/v1.0/Flight";
+    d3.json(dataUrl).then((data)=> {
       
-      // getting the sample names and looping through them to append each and its values to the dropdown
       var obj = {};
       var ret_arr = [];
       
       for (var i = 0; i < data.length; i++) {
           obj[data[i].Flight_By_Month] = true;
-      }
+      };
       for (var key in obj) {
           ret_arr.push(key);
       };
-      // var ret_arr = [6,7,8,12];
-      console.log(ret_arr);
-      for (var i = 0; i < ret_arr.length; i++) {
-          dropDown.append("option")
-                  .text(ret_arr[i])
-                  .property("value",ret_arr[i]);
-           // console.log(dropDown); 
-      }
+      
     
       // Use the first sample from the list to build the initial plots
       var firstSample = ret_arr[0];
@@ -413,10 +397,6 @@ function optionChanged1(newSample) {
 
 initial()
 initial1()
-
-
-
-
 
 
 
