@@ -47,7 +47,7 @@ def getSample():
 
 # Final_Data
 def final_Data():
-    results = col_1.find({}, {'_id':0}).limit(1000)
+    results = col_1.find({}, {'_id':0})
     final_Dat = []
     for result in results:
         final_Dat.append(result)

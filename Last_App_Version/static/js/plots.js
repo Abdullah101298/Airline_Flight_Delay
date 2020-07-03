@@ -1,5 +1,4 @@
 function BarChart(value) {
-  var dataUrl = "/api/v1.0/Final_Airlines_Data";
   d3.json("/api/v1.0/Final_Airlines_Data").then((data)=>{
     
     console.log(data);
@@ -108,14 +107,14 @@ function BarChart(value) {
         
         var data = [trace1,trace2];
         var layout = {
-          title: "Delay Count",
+          title: "Delays Count",
           width: 500,
           height: 500, 
           yaxis: {title: {text: "Number of Delays"}}
         };
         
         Plotly.newPlot("bar", data, layout); 
-        console.log()
+        
         var traces1 = {
           x: ['Monday', 'Tuesday', 'Wednesday', 'Thursday','Friday','Saturday','Sunday'],
           y: [sumARR_DELAY_18m/countm,sumARR_DELAY_18t/countt,sumARR_DELAY_18w/countw,sumARR_DELAY_18th/countth,sumARR_DELAY_18f/countf,sumARR_DELAY_18sa/countsa,sumARR_DELAY_18su/countsu],
@@ -132,10 +131,10 @@ function BarChart(value) {
         
         var data1 = [traces1, traces2];
 
-        var layout1 = {title: "Average Arrival/Departure time based on Day of the Week",
+        var layout1 = {title: "Average Delay in Arrival & Departure time based on Weekdays",
         width: 1000,
         height: 500, 
-        xaxis: {title: {text: "Day of the Week"}},
+        xaxis: {title: {text: "Weekdays"}},
         yaxis: {title: {text: "Average Delay Time (Hour)"}}
       };
 
@@ -148,7 +147,7 @@ function BarChart(value) {
           {
             domain: { x: [0, 1], y: [0, 1] },
             value: Average_Overall_Delay,
-            title: { text: "Average Departure Time (Hours)" },
+            title: { text: "Average Delays in Departure Time (Hours)" },
             type: "indicator",
             mode: "gauge+number+delta",
             delta: { reference: 1.5 },
@@ -160,8 +159,7 @@ function BarChart(value) {
         Plotly.newPlot("Gauge_chart", data, layout);
 
 
-      //}).catch(function(error) {
-      //   console.log(error)
+      
       });
       
 };

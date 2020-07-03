@@ -4,14 +4,14 @@
 
 import json
 import pandas as pd
-from main import getSample, final_Data, origin, flight, db, col_1
+from myData import getSample, final_Data, origin, flight, db, col_1
 from flask import Flask, jsonify, render_template
 
 #################################################
 # Flask Setup                                   #
 #################################################
 
-app = Flask(__name__)
+application = app = Flask(__name__)
 
 #################################################
 # Flask Routes                                  # 
@@ -56,11 +56,13 @@ def get_Final_Data():
 
 @app.route("/api/v1.0/Origin")
 def lol():
-    return jsonify(json.dumps(origin()))
+    origin1 = origin()
+    origin1 = pd.DataFrame(origin1)
+    return origin1.to_json(orient='records')
 
 @app.route("/api/v1.0/Flight")
 def flo():
     return jsonify(json.dumps(flight()))
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    application.run(debug=True)
